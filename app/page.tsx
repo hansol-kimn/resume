@@ -1,7 +1,9 @@
+import Introduce from "@/components/introduce";
+
 export default function Page() {
   return (
-    <div>
-      <h1>hello world</h1>
+    <div className="mx-auto max-w-[1000px] my-10">
+      <Introduce />
     </div>
   );
 }
