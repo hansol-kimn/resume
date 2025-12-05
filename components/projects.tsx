@@ -34,7 +34,7 @@ export default function Projects() {
                 <ul className="flex gap-1">
                   {content.tech.map((content, index) => {
                     return (
-                      <li key={index} className="inline bg-accent/50 pr-2.5 px-1.5 py-0.5 italic">
+                      <li key={index} className="inline bg-accent/15 pr-2.5 px-1.5 py-0.5 italic">
                         {content}
                       </li>
                     );
