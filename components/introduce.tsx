@@ -15,11 +15,15 @@ export default function Introduce() {
   ] as const;
   return (
     <div>
-      <H1>
-        반갑습니다,
-        <br />
-        개발자 김한솔입니다.
-      </H1>
+      <div className="flex items-end gap-2">
+        <H1>
+          반갑습니다,
+          <br />
+          개발자 김한솔입니다.
+        </H1>
+        <div className="w-2.5 h-[78px] bg-accent blink" />
+      </div>
+
       <div className="my-10">
         <H2>소개</H2>
         <P>

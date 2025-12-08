@@ -1,6 +1,7 @@
 import { ContentType } from "@/type";
 import { H2, H4, P, ProjectTitle } from "./ui/typography";
 import projectsData from "@/projectsData.json";
+import { COLOR } from "@/constant/color";
 
 export default function Projects() {
   const contentData = projectsData.project as ContentType[];
@@ -31,10 +32,15 @@ export default function Projects() {
               </Container>
               <Container>
                 <H4>Tect Stack</H4>
-                <ul className="flex gap-1">
+                <ul className="flex gap-1 flex-wrap">
                   {content.tech.map((content, index) => {
+                    // const matchedColor = COLOR.find((color) => color.label === content)?.color;
                     return (
-                      <li key={index} className="inline bg-accent/15 pr-2.5 px-1.5 py-0.5 italic">
+                      <li
+                        key={index}
+                        // style={{ backgroundColor: `${matchedColor}15` }}
+                        className="inline text-[12px] md:text-[14px] bg-accent/15 text-nowrap pr-2.5 px-1.5 py-0.5 italic"
+                      >
                         {content}
                       </li>
                     );
