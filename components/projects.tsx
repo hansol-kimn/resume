@@ -10,7 +10,7 @@ export default function Projects() {
       <div>
         {contentData.map((content, index) => {
           return (
-            <div key={index} className="py-4 flex flex-col gap-3.5">
+            <div key={index} className="py-6 flex flex-col gap-3.5">
               <ProjectTitle>{content.title}</ProjectTitle>
               <Container>
                 <H4>description</H4>
