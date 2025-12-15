@@ -2,6 +2,7 @@ import { ContentType } from "@/type";
 import { H2, H4, Li, P, ProjectTitle } from "./ui/typography";
 import projectsData from "@/projectsData.json";
 import { COLOR } from "@/constant/color";
+import TechBadge from "./ui/techBadge";
 
 export default function Projects() {
   const contentData = projectsData.project as ContentType[];
@@ -19,7 +20,7 @@ export default function Projects() {
               </Container>
               <Container>
                 <H4>What I worked on</H4>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-4">
                   {content.do.map((content, index) => {
                     return (
                       <Li key={index} className="flex items-start leading-[1.3]">
@@ -31,21 +32,13 @@ export default function Projects() {
                 </ul>
               </Container>
               <Container>
-                <H4>Tect Stack</H4>
-                <ul className="flex gap-1 flex-wrap">
+                <H4>Tech Stack</H4>
+                <div className="flex gap-1 flex-wrap">
                   {content.tech.map((content, index) => {
                     // const matchedColor = COLOR.find((color) => color.label === content)?.color;
-                    return (
-                      <Li
-                        key={index}
-                        // style={{ backgroundColor: `${matchedColor}15` }}
-                        className="inline text-[12px] md:text-[14px] bg-accent/15 text-nowrap pr-2.5 px-1.5 py-0.5 italic"
-                      >
-                        {content}
-                      </Li>
-                    );
+                    return <TechBadge key={index}>{content}</TechBadge>;
                   })}
-                </ul>
+                </div>
               </Container>
             </div>
           );

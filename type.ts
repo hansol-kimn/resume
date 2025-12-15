@@ -5,3 +5,14 @@ export interface ContentType {
   do: string[];
   tech: string[];
 }
+
+export interface PersonalInfoDataType {
+  label: string;
+  content: string;
+  type: "outLink" | "none";
+}
+
+export interface TechStackDataType {
+  label: string;
+  bgColor: string;
+}
