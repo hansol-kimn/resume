@@ -16,4 +16,7 @@ export const TechStackData: TechStackDataType[] = [
   { label: "Javascript", bgColor: "#ffffff" },
   { label: "Typescript", bgColor: "#ffffff" },
   { label: "TailwindCSS", bgColor: "#ffffff" },
+  { label: "React Motion", bgColor: "#ffffff" },
+  { label: "Zustand", bgColor: "#ffffff" },
+  { label: "PostgreSQL", bgColor: "#ffffff" },
 ];

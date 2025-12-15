@@ -12,6 +12,7 @@ export default function Introduce() {
           {/* <span className="w-2.5 h-[78px] bg-accent blink" /> */}
         </H1>
       </div>
+      <div className="w-full h-px bg-primary/20 my-10" />
       <PersonalInfo />
 
       <div className="my-10">

@@ -25,5 +25,5 @@ export function Li({ children, className }: { children: React.ReactNode; classNa
 }
 
 export function ProjectTitle({ children }: { children: React.ReactNode }) {
-  return <h4 className="text-base inline w-fit px-1 md:text-[22px] italic font-semibold bg-accent/70">{children}</h4>;
+  return <h4 className="text-[18px] inline w-fit px-1 md:text-[22px] italic font-semibold bg-accent/70">{children}</h4>;
 }

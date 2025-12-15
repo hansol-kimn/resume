@@ -63,6 +63,8 @@ export default function PersonalInfo() {
                 return <TechBadge key={data.label}>{data.label}</TechBadge>;
               })}
             </div>
+            {/* TODO: 뱃지 클릭했을 때 어떻게 목록 보이게 할지 고민해보기 */}
+            <p className="text-[12px] text-[#ababab]">*기술 뱃지를 클릭하면 해당 기술을 사용한 프로젝트의 목록을 확인하실 수 있습니다.</p>
           </div>
         </div>
       </div>
