@@ -1,5 +1,5 @@
 import { ContentType } from "@/type";
-import { H2, H4, P, ProjectTitle } from "./ui/typography";
+import { H2, H4, Li, P, ProjectTitle } from "./ui/typography";
 import projectsData from "@/projectsData.json";
 import { COLOR } from "@/constant/color";
 
@@ -22,10 +22,10 @@ export default function Projects() {
                 <ul className="flex flex-col gap-2">
                   {content.do.map((content, index) => {
                     return (
-                      <li key={index} className="flex items-start leading-[1.3]">
+                      <Li key={index} className="flex items-start leading-[1.3]">
                         <div className="bg-accent size-1 shrink-0 mr-[5px] translate-y-2" />
                         {content}
-                      </li>
+                      </Li>
                     );
                   })}
                 </ul>
@@ -36,13 +36,13 @@ export default function Projects() {
                   {content.tech.map((content, index) => {
                     // const matchedColor = COLOR.find((color) => color.label === content)?.color;
                     return (
-                      <li
+                      <Li
                         key={index}
                         // style={{ backgroundColor: `${matchedColor}15` }}
                         className="inline text-[12px] md:text-[14px] bg-accent/15 text-nowrap pr-2.5 px-1.5 py-0.5 italic"
                       >
                         {content}
-                      </li>
+                      </Li>
                     );
                   })}
                 </ul>

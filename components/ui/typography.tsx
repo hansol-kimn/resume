@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 export function H1({ children }: { children: React.ReactNode }) {
   return <h1 className="text-[35px] md:text-[70px] font-bold leading-[1.15]">{children}</h1>;
 }
@@ -14,8 +16,12 @@ export function H4({ children }: { children: React.ReactNode }) {
   return <h4 className="text-base md:text-[22px] font-semibold">{children}</h4>;
 }
 
-export function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-[13px] md:text-base text-primary">{children}</p>;
+export function P({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <p className={cn("text-[13px] md:text-base text-primary", className)}>{children}</p>;
+}
+
+export function Li({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <li className={cn("text-[13px] md:text-base text-primary", className)}>{children}</li>;
 }
 
 export function ProjectTitle({ children }: { children: React.ReactNode }) {
