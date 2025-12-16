@@ -2,9 +2,22 @@ import Image from "next/image";
 import { H3, P } from "./ui/typography";
 import Link from "next/link";
 import TechBadge from "./ui/techBadge";
-import { ContactData, SNSData, TechStackData } from "@/constant/data";
+import { ContactData, SNSData } from "@/constant/data";
+import projectsData from "@/projectsData.json";
+import { ContentType } from "@/type";
 
 export default function PersonalInfo() {
+  const contents = projectsData.project as ContentType[];
+  const techItem = [...new Set(contents.flatMap((data) => data.tech))];
+  // const getTechBadge = () => {
+  // 리팩토링 전
+  // const techArrays = contents.map((data, index) => {
+  //   return data.tech;
+  // });
+  // const techArray = techArrays.reduce((acc, curr) => acc.concat(curr), []);
+  // const techItem = techArray.filter((item, index) => techArray.indexOf(item) === index);
+  // };
+
   return (
     <>
       <div className="flex my-10 md:my-15 gap-3 md:gap-10 flex-col md:flex-row ">
@@ -59,8 +72,8 @@ export default function PersonalInfo() {
           <div className="mt-2 md:mt-0">
             <H3>기술 스택</H3>
             <div className="my-3 flex gap-1 flex-wrap">
-              {TechStackData.map((data) => {
-                return <TechBadge key={data.label}>{data.label}</TechBadge>;
+              {techItem.map((data) => {
+                return <TechBadge key={data}>{data}</TechBadge>;
               })}
             </div>
             {/* TODO: 뱃지 클릭했을 때 어떻게 목록 보이게 할지 고민해보기 */}
