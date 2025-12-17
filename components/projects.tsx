@@ -4,6 +4,8 @@ import projectsData from "@/projectsData.json";
 import { COLOR } from "@/constant/color";
 import TechBadge from "./ui/techBadge";
 
+const toSlug = (str: string) => str.toLowerCase().replace(/\s+/g, "-");
+
 export default function Projects() {
   const contentData = projectsData.project as ContentType[];
   return (
@@ -12,7 +14,7 @@ export default function Projects() {
       <div>
         {contentData.map((content, index) => {
           return (
-            <div key={index} className="py-6 flex flex-col gap-3.5">
+            <div key={index} id={toSlug(content.title)} className="py-6 flex flex-col gap-3.5 scroll-mt-10">
               <ProjectTitle>{content.title}</ProjectTitle>
               <Container>
                 <H4>description</H4>

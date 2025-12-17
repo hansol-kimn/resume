@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ScrollToTop from "@/components/scrollToTop";
 
 export const metadata: Metadata = {
   title: "Kimhansol resume",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body style={{ fontFamily: "Pretendard" }}>{children}</body>
+      <body style={{ fontFamily: "Pretendard" }}>
+        {children}
+        <ScrollToTop />
+      </body>
     </html>
   );
 }

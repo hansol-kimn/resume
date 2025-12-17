@@ -21,6 +21,16 @@ export default function PersonalInfo() {
 
   const filteredProjects = selectedTech ? contents.filter((project) => project.tech.includes(selectedTech)) : [];
 
+  const toSlug = (str: string) => str.toLowerCase().replace(/\s+/g, "-");
+
+  const handleProjectClick = (title: string) => {
+    const element = document.getElementById(toSlug(title));
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setSelectedTech(null);
+    }
+  };
+
   return (
     <>
       <div className="flex my-10 md:my-15 gap-3 md:gap-10 flex-col md:flex-row ">
@@ -97,12 +107,12 @@ export default function PersonalInfo() {
                         )}
                       >
                         <p className="text-sm font-medium mb-2">
-                          <span className="text-accent">{data}</span> 사용 프로젝트
+                          <span className="font-bold">{data}</span> 사용 프로젝트
                         </p>
                         <ul className="space-y-1">
                           {filteredProjects.map((project) => (
                             <li key={project.title} className="text-sm text-primary/80">
-                              • {project.title}
+                              <button onClick={() => handleProjectClick(project.title)} className="text-left cursor-pointer hover:bg-accent/20 w-full">• {project.title}</button>
                             </li>
                           ))}
                         </ul>
