@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { H3, P } from "./ui/typography";
 import Link from "next/link";
@@ -5,18 +7,19 @@ import TechBadge from "./ui/techBadge";
 import { ContactData, SNSData } from "@/constant/data";
 import projectsData from "@/projectsData.json";
 import { ContentType } from "@/type";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export default function PersonalInfo() {
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const contents = projectsData.project as ContentType[];
   const techItem = [...new Set(contents.flatMap((data) => data.tech))];
-  // const getTechBadge = () => {
-  // 리팩토링 전
-  // const techArrays = contents.map((data, index) => {
-  //   return data.tech;
-  // });
-  // const techArray = techArrays.reduce((acc, curr) => acc.concat(curr), []);
-  // const techItem = techArray.filter((item, index) => techArray.indexOf(item) === index);
-  // };
+
+  const handleTechClick = (tech: string) => {
+    setSelectedTech(selectedTech === tech ? null : tech);
+  };
+
+  const filteredProjects = selectedTech ? contents.filter((project) => project.tech.includes(selectedTech)) : [];
 
   return (
     <>
@@ -72,11 +75,43 @@ export default function PersonalInfo() {
           <div className="mt-2 md:mt-0">
             <H3>기술 스택</H3>
             <div className="my-3 flex gap-1 flex-wrap">
-              {techItem.map((data) => {
-                return <TechBadge key={data}>{data}</TechBadge>;
+              {techItem.map((data, index) => {
+                const isSelected = selectedTech === data;
+                const rightPosition = index >= techItem.length - 3;
+                return (
+                  <div key={data} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => handleTechClick(data)}
+                      className={`cursor-pointer inline text-[12px] md:text-[14px] text-nowrap pr-2.5 px-1.5 py-0.5 italic transition-colors ${
+                        isSelected ? "bg-accent text-white" : "bg-accent/30 hover:bg-accent/50"
+                      }`}
+                    >
+                      {data}
+                    </button>
+                    {isSelected && (
+                      <div
+                        className={cn(
+                          "absolute top-full mt-1 z-10 min-w-[250px] p-3 bg-white border border-primary/10 rounded shadow-md",
+                          rightPosition ? "right-0" : "left-0",
+                        )}
+                      >
+                        <p className="text-sm font-medium mb-2">
+                          <span className="text-accent">{data}</span> 사용 프로젝트
+                        </p>
+                        <ul className="space-y-1">
+                          {filteredProjects.map((project) => (
+                            <li key={project.title} className="text-sm text-primary/80">
+                              • {project.title}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                );
               })}
             </div>
-            {/* TODO: 뱃지 클릭했을 때 어떻게 목록 보이게 할지 고민해보기 */}
             <p className="text-[12px] text-[#ababab]">*기술 뱃지를 클릭하면 해당 기술을 사용한 프로젝트의 목록을 확인하실 수 있습니다.</p>
           </div>
         </div>
